@@ -58,13 +58,13 @@
 
 \title{	
 \normalfont \normalsize 
-\textsc{Prirodoslovno-matematički fakultet, Sveučilište u Zagrebu \\ Matematički odsjek} \\ [25pt] % Your university, school and/or department name(s)
+\textsc{Prirodoslovno-matematicki fakultet, Sveuciliste u Zagrebu \\ Matematicki odsjek} \\ [25pt] % Your university, school and/or department name(s)
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
 \huge Detekcija pakiranih datoteka \\ % The assignment title
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
-\author{Jurica Miletić, Roko Kokan, Ante Sosa} % Your name
+\author{Jurica Miletic, Roko Kokan, Ante Sosa} % Your name
 
 \date{\normalsize\today} % Today's date or a custom date
 
@@ -102,8 +102,6 @@ Na Slici 1.1 je prikazan proces pakiranja. \\
 
 U području računalne sigurnosti posebno su učestali packeri za Windows Portable Executable, tj. PE datoteke.
 
-\vspace{3mm}
-
 \subsection{Opis problema}
 
 PE datoteke su povijesno najčešći nositelji malicioznog koda u obliku virusa, ransomwarea,
@@ -120,24 +118,48 @@ Na taj se način iz jedne maliciozne datoteke može napraviti više različitih 
 imaju nemalicioznu primjenu vrlo su rijetki u odnosu na packere koji se koriste za malware.
 
 \subsection{Skup podataka}
+S obzirom da rjesavamo problem sa natjecanja Mozgalo, skup podataka za ovaj problem nam je omogucio zlatni partner Mozgala, tvrtka ReversingLabs. Oni su razvili ReversingLabs TitaniumCore\textsuperscript{TM} platformu koja prepoznaje PE packere koriste TitaniumCore potpise koje pišu stručnjaci za reverzno inženjerstvo i analizu sigurnosnih prijetnji.
+
+\vspace{3mm}
 
 Skup podataka bazirat će se na skupu raznovrsnih packera i dodatnim nepakiranim
 datotekama. Svaki primjer se sastoji od dva dijela: originalne datoteke i TitaniumCore
 izvještaja za tu datoteku.
 
-\vspace{3mm}
-
-Cilj zadatka je odvojiti samo pakirane datoteke od nepakiranih i raspakiranih, ali će sudionici za
-razvoj modela dobiti detaljnije informacije, poput generalnih vrsta packera. U podacima mogu
-biti varijante višestruko pakiranih datoteka, poput dvostruko pakirane datoteke koja se tijekom
-TitaniumCore procesiranja zatim jednom raspakira (i dalje se označava kao pakirana).
-
 \section{Cilj i hipoteze istraživanja problema}
 
+Pristup pisanja potpisa za pojedine \textit{packere} je vremenski zahtjevan te zahtjeva vec izdvojene pakiranih datoteka.
+
+Cilj istrazivanja problema je, uz dani skup podataka, napraviti sustav za detekciju pakiranih datoteka.
+
+\vspace{3mm}
+
+Pojedine znacajke unutar TitaniumCore izvjestaja nam daju odredene naznake da bi datoteka mogla biti pakirana, poput imena odjeljaka (\textit{Section name}) i entropije dane datoteke.\\
+Primjerice, nekad imena razlicitih odjeljaka nose ime pojedinih packera (UPX), te je entropija pakirane datoteke generalno puno veca nego u obicnim datotekama.\\
+No, problem je sto dosta stvari koje se prikazuju u TitaniumCore izvjestaju mogu biti rucno mijenjane u danoj datoteci pa ne mozemo uzeti pojedinu znacajku zdravo za gotovo.\\
+Zbog svega navedenoga, hipoteze naseg istrazivanja su:
+
+\begin{itemize}
+\item Pojedine znacajke u TitaniumCore reportu su usko vezane uz to je li neka datoteka pakirana ili ne
+\item Kombinacijom tih znacajki nadziranim ucenjem, mozemo postici visok rezultat 
+\item Prepoznavanje malware kampanja
+\item Lakši odabir packera za koje se isplati razvijati unpackere
+\end{itemize}
+
+\vspace{3mm}
+
+Metoda automatske detekcije pakiranih datoteka omogucila bi:
+
+\begin{itemize}
+\item Izdvajanje zanimljivih malware datoteka za detaljniju analizu
+\item Ranu detekciju nikad prije viđenog malwarea
+\item Prepoznavanje malware kampanja
+\item Lakši odabir packera za koje se isplati razvijati unpackere
+\end{itemize}
 
 \section{Pregled dosadašnjih istraživanja}
 
-Analiza entropije se koristi za uvid u sadržaj PE datoteka, primarno za detekciju kompresije i kriptografije tipično vezanih uz packere.
+Analiza entropije se koristi za uvid u sadržaj PE datoteka, primarno za detekciju kompresije i kriptografije tipično vezanih uz \textit{packere}.
 Dio pristupa se bazira na analizi svojstava PE zaglavlja i jednostavnim klasifikatorima. Također, znatno poboljšanje točnosti detekcije malwarea dobiveno je koristeći stablo odluke za detekciju pakiranja.
 
 \vspace{3mm}
