@@ -83,11 +83,11 @@ jednom raspakira (i dalje se označava kao pakirana).
 
 \section{Problem}
 
+
 \section{Pristup problemu}
 Naš pristup problemu bazirao se na pronalaženju glavnih značajki iz TitaniumCore izvještaja.
 Značajke koje smo izvukli iz TitaniumCore izvještaja:
 \begin{itemize}
-<<<<<<< HEAD
 \item  ime odjeljaka
 \item	ime importova
 \item 	imena apija koji se pozivaju
@@ -101,19 +101,6 @@ Značajke koje smo izvukli iz TitaniumCore izvještaja:
 \item 	minimalna entropija sekcija
 \item	vrijeme
 \item	veličina opcijskog zaglavlja
-=======
-\item 10 najčešćih imena odjeljaka (section names) i broj pojavljivanja ostalih odjeljaka
-\item 10 najčešćih imena unešenih datoteka (import names)
-\item 25 najčešćih programskih sučelja za aplikacije koje koriste izvršne datoteke
-\item 25 najčešćih upozorenja koje se javljaju u izvršnim datotekama
-\item 16 najčešćih resursa u izvršnim datotekama
-\item veličina odjeljaka
-\item entropije odjeljaka (ukupna, maksimalna i aritmetička sredina entropija svih odjeljaka)
-\item datum nastanka datoteke
-\item imena odjeljaka koji se pojavljuju više od 95\% puta u pakiranim datotekama
-\item imena odjeljaka koji se pojavljuju više od 80\% puta u pakiranim datotekama
-\item veličina zaglavlja (optional headers)
->>>>>>> f8b855cfff44e3e4e030288e54b61f523b0e7868
 \end{itemize}
 Nakon toga smo odlučili analizirati dane značajke izgradnjom modela Random Forest Classifiera i XGBoost treniranjem te bi usporedbom važnosti značajki u jednom od modela zadržali one koje su najviše utjecali na rezultat treniranja danog modela.
 \section{Realizacija rješenja}
@@ -139,6 +126,10 @@ Nakon toga odabiremo parametre na isti način kao i kod XGBClassifiera. Također
 % primjer fitanog modela i njegovog procesa treniranja.
 S obzirom na prikazano, XGBoost model nakon treniranja na podacima daje bolje rezultate, te ćemo njega koristiti za daljnju analizu značajki.
 
+\begin{figure}[h]
+\centering
+\includegraphics{ent.png}
+\end{figure}
 
 \section*{Acknowledgment}
 
