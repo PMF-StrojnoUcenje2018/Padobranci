@@ -169,7 +169,7 @@ S obzirom na prikazano, XGBoost model nakon treniranja na podacima daje bolje re
 \setlength\figurewidth{3.5in}
 \begin{figure}[h]
 \InputIfFileExists{RSXGB.tikz}{}{\textbf{!! Missing graphics !!}}
-\caption{Rezultati pretrazivanja parametara sa Random Search CV-om za XGB model}
+\caption{Rezultati pretraživanja parametara sa Random Search CV-om za XGB model}
 \end{figure}
 \begin{figure}[h]
 \InputIfFileExists{XGB_pocetni.tikz}{}{\textbf{!! Missing graphics !!}}
@@ -177,7 +177,7 @@ S obzirom na prikazano, XGBoost model nakon treniranja na podacima daje bolje re
 \end{figure}
 \begin{figure}[h]
 \InputIfFileExists{RSRF.tikz}{}{\textbf{!! Missing graphics !!}}
-\caption{Rezultati pretrazivanja parametara sa Random Search CV-om za Random Forest model}
+\caption{Rezultati pretraživanja parametara sa Random Search CV-om za Random Forest model}
 \end{figure}
 \begin{figure}[h]
 \InputIfFileExists{RandomForest.tikz}{}{\textbf{!! Missing graphics !!}}
@@ -209,15 +209,19 @@ Nakon što smo istrenirali model na trening podacima, ispisali smo sve značajke
 Od sveukupno 113 značajki uzeli smo 30 najznačajnijih, koji imaju utjecaj veći od 0.5\% na treniranje modela, te ćemo njih iskoristiti za treniranje krajnjeg XGBClassifier modela. Opet ćemo provrtjeti Randomized Search CV kako bismo našli najbolje parametre za ovaj podskup značajki.
 \begin{figure}[h]
 \InputIfFileExists{RSXGBless.tikz}{}{\textbf{!! Missing graphics !!}}
+\caption{Randomized Search CV za model sa 30 značajki}
 \end{figure}
 \section{Zaključak}
-Nas krajnji model ima preciznost od 99.08\%. Zakljucili smo da entropija izvrsne datoteke od raznih znacajki koje smo uzeli na promatranje ima najvecu vaznost, te da je pokazala najvecu povezanost sa tim je li izvrsna datoteka pakirana.
+Naš krajnji model ima preciznost od 99.08\%. Zaključili smo da entropija izvršne datoteke ima najvecu vaznost od raznih znacajki koje smo uzeli na promatranje, te da je pokazala najveću povezanost sa tim je li izvršna datoteka pakirana.
 \begin{figure}
 \InputIfFileExists{Final_model.tikz}{}{\textbf{!! Missing graphics !!}}
 \caption{Rezultati cross validacije krajnjeg modela}
 \end{figure}
 \newpage
-\section{Majka}
+\section{Osvrt na druge pristupe}
+Naš tim se oslonio pretraživanje raznih značajki iz TitaniumCore izvještaja, te koristeći modele Random Foresta i XGBoosta, koji su postigli uspjehe na ovom području, pokušati pronaći značajke koje su najviše povezane za pakiranim datoteka. Na natjecanju Mozgalo smo postigli dobru točnost, no nismo se uspjeli plasirati u finale. Od ostalih pristupa, jedna ekipa na natjecanju se istaknula istaknula po tome što je uz TitaniumCore izvještaj istraživala i  izvorne datoteke koje smo dobili na početku natjecanja.
+\section{Mogući budući nastavak istraživanja}
+S obzirom na dobru preciznost koju smo ostvarili na podacima za treniranje pretraživajući samo TitaniumCore izvještaj datoteka, idući korak bi nam bio analizirati izvorne datoteke, kako bismo mogli sprovesti opširnije istraživanje na pakiranim i nepakiranim izvršnim datotekama.
 
 \begin{thebibliography}{00}
 \bibitem{b1} Xabier Ugarte-Pedrero, Igor Santos, Borja Sanz, Carlos Laorden and Pablo Garcia Bringas, ``Countering Entropy Measure Attacks on Packed
