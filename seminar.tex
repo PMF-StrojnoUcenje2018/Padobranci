@@ -68,6 +68,17 @@ obliku virusa, ransomwarea, trojanskih konja, itd., te se packeri koriste da bi 
 Oni nastaju tako da se prikupe primjeri nekog malwarea te se pronađe niz byteova specifičan za taj malware, 
 koji se zatim traži prilikom skeniranja datoteka antivirusom.
 
+Primjenom packera mijenja se sadržaj datoteke, zbog čega potpisi mogu prestati biti prisutni. Na taj se način iz jedne maliciozne datoteke može napraviti više različitih inačica. Packeri koji imaju nemalicioznu primjenu vrlo su rijetki u odnosu na packere koji se koriste za malware. Štoviše, antivirusi često rade potpise za same packere koji se koriste isključivo za malware. Za packere generalne namjene razvijaju se unpackeri kojima se obnavlja originalni sadržaj datoteke za analizu, a detekcija pakiranja nepoznatim formatom snažna je naznaka malwarea.
+
+Ovaj pristup pouzdan je za detekciju pojedinih packera, ali vremenski je zahtjevan čak i za specijalizirane reverzne inžinjere. Osim toga, takav pristup zahtijeva i već izdvojene primjere pakiranih datoteka.
+
+Metoda automatske detekcije pakiranih datoteka omogućuje:
+\begin{itemize}
+\item Izdvajanje zanimljivih malware datoteka za detaljniju analizu
+\item Ranu detekciju nikad prije viđenog malwarea
+\item Prepoznavanje malware kampanja 
+\end{itemize}
+
 
 \section{Podaci}
 Skup podataka bazirat će se na skupu raznovrsnih packera 
