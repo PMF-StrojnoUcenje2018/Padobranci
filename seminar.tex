@@ -9,6 +9,16 @@
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\usepackage{pgfplots}
+\usepackage[stdout=false]{pythontex}
+% matplotlib2tikz prints messages to stdout, so don't include
+% stdout automatically; could also redirect stdout to avoid this
+\setpythontexworkingdir{.}
+% set PythonTeX to use the document root directory as the working
+% directory, so that all plots will be saved there; could use 
+% another location, but then would need to specify a path when
+% using \input and \InputIfFileExists
     
 
 \usepackage[utf8]{inputenc}
@@ -59,8 +69,17 @@ koji se zatim traži prilikom skeniranja datoteka antivirusom.
 \section{Općenito o packerima}
 
 \section{Podaci}
-%Skup podataka bazirat će se na skupu raznovrsnih ​packera​ i dodatnim nepakiranim datotekama. Svaki primjer se sastoji od dva dijela: originalne datoteke i TitaniumCore izvještaja za tu datoteku. 
-%Cilj zadatka je odvojiti samo pakirane datoteke od nepakiranih i raspakiranih, ali će sudionici za razvoj modela dobiti detaljnije informacije, poput generalnih vrsta ​packera​. U podacima mogu biti varijante višestruko pakiranih datoteka, poput dvostruko pakirane datoteke koja se tijekom TitaniumCore procesiranja zatim jednom raspakira (i dalje se označava kao pakirana).
+Skup podataka bazirat će se na skupu raznovrsnih packera 
+i dodatnim nepakiranim datotekama. Svaki primjer se sastoji 
+od dva dijela: originalne datoteke i TitaniumCore izvještaja 
+za tu datoteku. 
+Cilj zadatka je odvojiti samo pakirane datoteke od 
+nepakiranih i raspakiranih, ali će sudionici za razvoj 
+modela dobiti detaljnije informacije, poput generalnih 
+vrsta packera. U podacima mogu biti varijante višestruko 
+pakiranih datoteka, poput dvostruko pakirane datoteke 
+koja se tijekom TitaniumCore procesiranja zatim 
+jednom raspakira (i dalje se označava kao pakirana).
 
 \section{Problem}
 
@@ -68,6 +87,7 @@ koji se zatim traži prilikom skeniranja datoteka antivirusom.
 Naš pristup problemu bazirao se na pronalaženju glavnih značajki iz TitaniumCore izvještaja.
 Značajke koje smo izvukli iz TitaniumCore izvještaja:
 \begin{itemize}
+<<<<<<< HEAD
 \item  ime odjeljaka
 \item	ime importova
 \item 	imena apija koji se pozivaju
@@ -81,8 +101,43 @@ Značajke koje smo izvukli iz TitaniumCore izvještaja:
 \item 	minimalna entropija sekcija
 \item	vrijeme
 \item	veličina opcijskog zaglavlja
+=======
+\item 10 najčešćih imena odjeljaka (section names) i broj pojavljivanja ostalih odjeljaka
+\item 10 najčešćih imena unešenih datoteka (import names)
+\item 25 najčešćih programskih sučelja za aplikacije koje koriste izvršne datoteke
+\item 25 najčešćih upozorenja koje se javljaju u izvršnim datotekama
+\item 16 najčešćih resursa u izvršnim datotekama
+\item veličina odjeljaka
+\item entropije odjeljaka (ukupna, maksimalna i aritmetička sredina entropija svih odjeljaka)
+\item datum nastanka datoteke
+\item imena odjeljaka koji se pojavljuju više od 95\% puta u pakiranim datotekama
+\item imena odjeljaka koji se pojavljuju više od 80\% puta u pakiranim datotekama
+\item veličina zaglavlja (optional headers)
+>>>>>>> f8b855cfff44e3e4e030288e54b61f523b0e7868
 \end{itemize}
+Nakon toga smo odlučili analizirati dane značajke izgradnjom modela Random Forest Classifiera i XGBoost treniranjem te bi usporedbom važnosti značajki u jednom od modela zadržali one koje su najviše utjecali na rezultat treniranja danog modela.
 \section{Realizacija rješenja}
+Prvo smo odlučili istrenirati model XGBoost Classifiera iz biblioteke xgboost u pythonu. Da bismo odredili hiperparametre modela koristili smo Randomized Search CV iz biblioteke sklearn (modul model\_selection) kako bismo pretražili prostor vrijednosti za parametre
+\begin{itemize} 
+\item max\_depth ( $[1, 2,..., 100]$ )
+\item min\_child\_weight ( $[0.1, 0.2,..., 3.0]$ )
+\item learning\_rate ( $[0.1, 0.2,..., 3.0]$ )
+\item base\_score. ( $[0.5, 0.6, 0.7, 0.8, 0.9] $ )
+\end{itemize}
+% slika ode kako je prošlo traženje
+Nakon toga odabiremo parametre koji daju najbolji rezultat (po srednjoj vrijednosti deseterostruke cross validacije koju provede Randomized Search CV) na nasem skupu podataka za pretraživanje. Također, uz zadane parametre za model xgboosta smo odlučili koristiti 100 stabala (po defaultnim postavkama u XGBClassifieru).
+% primjer fitanog modela i njegovog procesa treniranja.
+Nakon toga smo odlučili istrenirati model Random Forest Classifier, također određujući hiperparametre modela koristeći Randomized Search CV. Željeli smo pretražiti prostor vrijednosti za parametre 
+\begin{itemize} 
+\item max\_depth ( $[1, 2,..., 100]$ )
+\item criterion ( $[True, False]$ )
+\item oob\_score ( $[True, False]$ )
+\item max\_features ( $[0.001, 0.002,..., 1.000] $ )
+\end{itemize}
+% slika ode kako je prošlo traženje
+Nakon toga odabiremo parametre na isti način kao i kod XGBClassifiera. Također koristit ćemo 100 stabala (po defaultnim postavkama).
+% primjer fitanog modela i njegovog procesa treniranja.
+S obzirom na prikazano, XGBoost model nakon treniranja na podacima daje bolje rezultate, te ćemo njega koristiti za daljnju analizu značajki.
 
 
 \section*{Acknowledgment}
