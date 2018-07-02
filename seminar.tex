@@ -81,11 +81,17 @@ koja se tijekom TitaniumCore procesiranja zatim
 jednom raspakira (i dalje se označava kao pakirana).
 
 \section{Problem}
+<<<<<<< HEAD
 Problem se sastojao od odabira značajki i izgradnje modela stojnog učenja koji će najbolje predvđati jeli dana datoteka pakirana.
+=======
+
+
+>>>>>>> 674cb5e99c38f260430c1fd005284614ad7eefd6
 \section{Pristup problemu}
 Naš pristup problemu bazirao se na pronalaženju glavnih značajki iz TitaniumCore izvještaja.
 Značajke koje smo izvukli iz TitaniumCore izvještaja:
 \begin{itemize}
+<<<<<<< HEAD
 \item 10 najčešćih imena odjeljaka (section names) i broj pojavljivanja ostalih odjeljaka
 \item 10 najčešćih imena unešenih datoteka (import names)
 \item 25 najčešćih programskih sučelja za aplikacije koje koriste izvršne datoteke
@@ -97,6 +103,21 @@ Značajke koje smo izvukli iz TitaniumCore izvještaja:
 \item imena odjeljaka koji se pojavljuju više od 95\% puta u pakiranim datotekama
 \item imena odjeljaka koji se pojavljuju više od 80\% puta u pakiranim datotekama
 \item veličina zaglavlja (optional headers)
+=======
+\item  ime odjeljaka
+\item	ime importova
+\item 	imena apija koji se pozivaju
+\item	upozorenja
+\item 	imena resursa
+\item	veličina filea
+\item	veličina odjeljaka 
+\item	entropija datoteke
+\item 	srednja entropija sekcija
+\item	maksimalna entropija sekcija
+\item 	minimalna entropija sekcija
+\item	vrijeme
+\item	veličina opcijskog zaglavlja
+>>>>>>> 674cb5e99c38f260430c1fd005284614ad7eefd6
 \end{itemize}
 Prvotno smo promatrali samo imena odjeljaka iz čega smo mogli izvući podosta novih značajki. Sama imena odjeljaka mogu biti promjenjena i samim time, ime odjeljka može biti poizvoljno, pa nije baš prepuzdana značajka. Nadalje, promatrali smo koje sve api-je datoteka poziva, iz čega smo pronašli dosta ''sumljivih'' api-ja, te imena datoteka koje su nužne za pokretanje datoteke.  Promatrali smo upozorenja koja se javljaju prilikom izvođenja datoteke, veličinu odjeljaka i veličinu cijele datoteke.
 Značajke vezane za razinu entropije su pokazale kao najpuzdanije.
@@ -126,6 +147,10 @@ Nakon toga odabiremo parametre na isti način kao i kod XGBClassifiera. Također
 % primjer fitanog modela i njegovog procesa treniranja.
 S obzirom na prikazano, XGBoost model nakon treniranja na podacima daje bolje rezultate, te ćemo njega koristiti za daljnju analizu značajki.
 
+\begin{figure}[h]
+\centering
+\includegraphics{ent.png}
+\end{figure}
 
 \section*{Acknowledgment}
 
