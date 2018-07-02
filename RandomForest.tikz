@@ -1,0 +1,70 @@
+% This file was created by matplotlib2tikz v0.6.17.
+\begin{tikzpicture}
+
+\begin{axis}[
+title={Learning Curves (Random Forest)},
+xlabel={Training examples},
+ylabel={Score},
+xmin=1925.75, xmax=36603.25,
+ymin=0.7, ymax=1.01,
+width=\figurewidth,
+height=\figureheight,
+tick align=outside,
+tick pos=left,
+xmajorgrids,
+x grid style={white!69.01960784313725!black},
+ymajorgrids,
+y grid style={white!69.01960784313725!black},
+legend style={at={(0.03,0.03)}, anchor=south west, draw=white!80.0!black},
+legend cell align={left},
+legend entries={{Training score},{Cross-validation score}}
+]
+\addlegendimage{no markers, red}
+\addlegendimage{no markers, green!50.0!black}
+\path [draw=red, fill=red, opacity=0.1] (axis cs:3502,0.968018275271274)
+--(axis cs:3502,0.966304968589378)
+--(axis cs:11383,0.965123429675832)
+--(axis cs:19264,0.965220099667774)
+--(axis cs:27145,0.966255295634555)
+--(axis cs:35027,0.972592571444885)
+--(axis cs:35027,0.973363405372998)
+--(axis cs:35027,0.973363405372998)
+--(axis cs:27145,0.96662368760361)
+--(axis cs:19264,0.969736295681063)
+--(axis cs:11383,0.975665466045858)
+--(axis cs:3502,0.968018275271274)
+--cycle;
+
+\path [draw=green!50.0!black, fill=green!50.0!black, opacity=0.1] (axis cs:3502,0.966655247230787)
+--(axis cs:3502,0.961288112367249)
+--(axis cs:11383,0.962544250314034)
+--(axis cs:19264,0.963001027749229)
+--(axis cs:27145,0.963229416466827)
+--(axis cs:35027,0.972821742605915)
+--(axis cs:35027,0.97499143542309)
+--(axis cs:35027,0.97499143542309)
+--(axis cs:27145,0.969281717483156)
+--(axis cs:19264,0.971451410300331)
+--(axis cs:11383,0.975676601575882)
+--(axis cs:3502,0.966655247230787)
+--cycle;
+
+\addplot [semithick, red, mark=*, mark size=3, mark options={solid}]
+table {%
+3502 0.967161621930326
+11383 0.970394447860845
+19264 0.967478197674419
+27145 0.966439491619083
+35027 0.972977988408942
+};
+\addplot [semithick, green!50.0!black, mark=*, mark size=3, mark options={solid}]
+table {%
+3502 0.963971679799018
+11383 0.969110425944958
+19264 0.96722621902478
+27145 0.966255566974991
+35027 0.973906589014503
+};
+\end{axis}
+
+\end{tikzpicture}

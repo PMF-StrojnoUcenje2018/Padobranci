@@ -1,0 +1,70 @@
+% This file was created by matplotlib2tikz v0.6.17.
+\begin{tikzpicture}
+
+\begin{axis}[
+title={Learning Curves (Final model)},
+xlabel={Training examples},
+ylabel={Score},
+xmin=1925.75, xmax=36603.25,
+ymin=0.7, ymax=1.01,
+width=\figurewidth,
+height=\figureheight,
+tick align=outside,
+tick pos=left,
+xmajorgrids,
+x grid style={white!69.01960784313725!black},
+ymajorgrids,
+y grid style={white!69.01960784313725!black},
+legend style={at={(0.03,0.03)}, anchor=south west, draw=white!80.0!black},
+legend cell align={left},
+legend entries={{Training score},{Cross-validation score}}
+]
+\addlegendimage{no markers, red}
+\addlegendimage{no markers, green!50.0!black}
+\path [draw=red, fill=red, opacity=0.1] (axis cs:3502,1)
+--(axis cs:3502,0.999714448886351)
+--(axis cs:11383,0.999648598787666)
+--(axis cs:19264,0.99968853820598)
+--(axis cs:27145,0.999668447227851)
+--(axis cs:35027,0.999600308333571)
+--(axis cs:35027,0.999743055357296)
+--(axis cs:35027,0.999743055357296)
+--(axis cs:27145,0.999742125621661)
+--(axis cs:19264,0.99984426910299)
+--(axis cs:11383,0.999824299393833)
+--(axis cs:3502,1)
+--cycle;
+
+\path [draw=green!50.0!black, fill=green!50.0!black, opacity=0.1] (axis cs:3502,0.975334018499486)
+--(axis cs:3502,0.975105629781889)
+--(axis cs:11383,0.980586959004225)
+--(axis cs:19264,0.983441817974192)
+--(axis cs:27145,0.98538312207377)
+--(axis cs:35027,0.987438620532146)
+--(axis cs:35027,0.987781203608542)
+--(axis cs:35027,0.987781203608542)
+--(axis cs:27145,0.98538312207377)
+--(axis cs:19264,0.984355372844582)
+--(axis cs:11383,0.981614708233413)
+--(axis cs:3502,0.975334018499486)
+--cycle;
+
+\addplot [semithick, red, mark=*, mark size=3, mark options={solid}]
+table {%
+3502 0.999857224443175
+11383 0.999736449090749
+19264 0.999766403654485
+27145 0.999705286424756
+35027 0.999671681845434
+};
+\addplot [semithick, green!50.0!black, mark=*, mark size=3, mark options={solid}]
+table {%
+3502 0.975219824140687
+11383 0.981100833618819
+19264 0.983898595409387
+27145 0.98538312207377
+35027 0.987609912070344
+};
+\end{axis}
+
+\end{tikzpicture}
